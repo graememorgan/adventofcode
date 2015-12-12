@@ -1,5 +1,4 @@
-
-values = {k: v for v, k in [line.split(" -> ") for line in open("day7-input").read().split("\n") if line]}
+values = {k: v for v, k in [line.split(" -> ") for line in open("day07-input").read().split("\n") if line]}
 
 # for part 2:
 #values["b"] = 46065

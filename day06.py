@@ -1,4 +1,4 @@
-instructions = open("day6-input").readlines()
+instructions = open("day06-input").readlines()
 
 def switch(lights, operators):
   for instruction in instructions:
