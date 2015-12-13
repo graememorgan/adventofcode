@@ -7,7 +7,7 @@ pairings = defaultdict(int, **{(a, b.replace(".", "")): (-1 if "lose" in gl else
 
 people = set(a for a, b in pairings.keys())
 # for part 2:
-#people = set(a for a, b in pairings.keys()) | set("me")
+#people = set(a for a, b in pairings.keys()) | set(["me"])
 
 print max([sum([pairings[(a, b)] + pairings[(b, a)] for a, b in zip(permutation, permutation[1:] + permutation[:1])]) for permutation in permutations(people)])
 
