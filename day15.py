@@ -14,29 +14,24 @@ def combinations_with_replacement_counts(n, r):
     yield tuple(map(operator.sub, stops, starts))
 
 print max(
-  [
-    reduce(
-      operator.mul, 
-      [ # transpose the ingredients--nutritional information list, and take the sum of each
-        max(0, sum(line))
-        for line
-        in zip(
-          *[ # add up the nutritional information for each ingredient
-            [teaspoons * v for v in value]
-            for teaspoons, value
-            in zip(combination, values)])[:-1]
-          ],
-      1
-    )
+  reduce(operator.mul, nutrition[:-1], 1)
+  for nutrition
+  in [
+    [ # transpose the ingredients--nutritional information list, and take the sum of each
+      max(0, sum(line))
+      for line
+      in zip(
+        *[ # add up the nutritional information for each ingredient
+          [teaspoons * v for v in value]
+          for teaspoons, value
+          in zip(combination, values)
+        ]
+      )
+    ]
     for combination
     in combinations_with_replacement_counts(len(values), 100)
-    # for part 2
-    if sum(
-      [
-        teaspoons * value[4]
-        for teaspoons, value
-        in zip(combination, values)
-      ]) == 500
-    ]
+  ]
+  # for part 2
+  #if nutrition[-1] == 500
   )
 
